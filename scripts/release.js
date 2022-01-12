@@ -103,8 +103,8 @@ const release = () => {
     process.exit(1);
   }
 
-  // cleanUp(remoteBranch);
-  // updateJSSdkDep();
+  cleanUp(remoteBranch);
+  updateJSSdkDep();
   buildAndPack();
   checkNPMDepsInstall();
 
@@ -123,7 +123,7 @@ const hotfix = () => {
     logger.error(`We currently do not do hotfix for pre-release version.`);
     process.exit(1);
   }
-  cleanUp(remoteBranch);
+  cleanUp();
   updateJSSdkDep();
   buildAndPack();
   checkNPMDepsInstall();
