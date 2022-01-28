@@ -24,8 +24,9 @@ import { ControlBarButton } from '../../ui/ControlBar/ControlBarButton';
 import { Microphone } from '../../ui/icons';
 import { Spinner } from '../../ui/icons';
 import { PopOverItem } from '../../ui/PopOver/PopOverItem';
+import { BaseSdkProps } from '../Base';
 
-interface Props {
+interface Props extends BaseSdkProps {
   /** The label that will be shown when microphone is muted, it defaults to `Mute`. */
   muteLabel?: string;
   /** The label that will be shown when microphone is unmuted, it defaults to `Unmute`. */
@@ -50,6 +51,7 @@ const AudioInputVFControl: React.FC<Props> = ({
   voiceFocusOnLabel = 'Amazon Voice Focus enabled',
   voiceFocusOffLabel = 'Enable Amazon Voice Focus',
   appendSampleDevices = true,
+  ...rest
 }) => {
   const meetingManager = useMeetingManager();
   const [isLoading, setIsLoading] = useState(false);
@@ -195,6 +197,7 @@ const AudioInputVFControl: React.FC<Props> = ({
       onClick={toggleMute}
       label={muted ? unmuteLabel : muteLabel}
       children={dropdownWithVFOptions}
+      {...rest}
     />
   );
 };
